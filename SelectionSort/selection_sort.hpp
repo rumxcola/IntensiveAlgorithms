@@ -3,7 +3,7 @@
 #include <vector>
 
 // https://leetcode.com/problems/sort-an-array/
-// class Solution {
+class Solution {
 public:
     vector<int> sortArray(vector<int>& nums) {
         int n = nums.size();
