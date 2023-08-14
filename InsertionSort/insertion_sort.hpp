@@ -12,6 +12,32 @@ struct ListNode {
 };
 
 class Solution {
-public:
-  ListNode *insertionSortList(ListNode *head) {}
+  public:
+  ListNode* insertionSortList(ListNode* head) {
+      if (!head || !head->next)
+          return head;
+
+      ListNode *sorted = nullptr;
+      ListNode *curr = head;
+
+      while (curr) {
+          ListNode *next = curr->next;
+
+          if (!sorted || sorted->val >= curr->val) {
+              curr->next = sorted;
+              sorted = curr;
+          } else {
+              ListNode *temp = sorted;
+              while (temp->next && temp->next->val < curr->val) {
+                  temp = temp->next;
+              }
+              curr->next = temp->next;
+              temp->next = curr;
+          }
+
+          curr = next;
+      }
+
+      return sorted;
+  }
 };
